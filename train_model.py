@@ -5,6 +5,7 @@ from RL import take_action, reward_fn, BEGINNING_STATE, actions
 import argparse
 import time
 import os
+
 def save_model(Q,policy,new_model_path):
     Q_x={key:str(Q[key]) for key in Q}
     print(len(policy),len(Q_x))
@@ -13,7 +14,6 @@ def save_model(Q,policy,new_model_path):
         json.dump(policy,output)
     with open(f'{new_model_path}/weights.json','w') as output:
         json.dump(Q_x,output)
-
 
 def generate_random_state():
     state=copy.deepcopy(BEGINNING_STATE)
@@ -34,15 +34,15 @@ def generate_random_state():
             pos['col']=pos_col
             
     return state,pos
+
 if __name__=='__main__': 
 
     parser = argparse.ArgumentParser(description="Train the Q learning model to solve the puzzle")
-    parser.add_argument('--transfer_learning',action='store_true', help='If set to False will train a fresh model else will do Transfer learning. \
+    parser.add_argument('--transfer_learning',action='store_true', help='If not used will train a fresh model else will do Transfer learning. \
                         Specify pretrained model path in case of transfer learning.', required=not True)
-    parser.add_argument('--pretrained_model', type=str, help='Path for pretrained model to load for Transfer learning.\
-                         RESET flag should be False.',required=not True,default=None)
+    parser.add_argument('--pretrained_model', type=str, help='Path for pretrained model to load for Transfer learning.', 
+                        required=not True,default=None)
     args = parser.parse_args()
-   
 
     new_stamp=time.ctime()
     if not os.path.exists(os.path.join('models')):
@@ -62,14 +62,10 @@ if __name__=='__main__':
     
     gamma = 0.9  
     alpha = 0.05
-    
-    
-
     num_episodes = 20000000
     epsilon_decay=0.001
 
     for episode in range(num_episodes):
-        
         state,pos = generate_random_state()
         done=False
         steps=0
@@ -100,9 +96,6 @@ if __name__=='__main__':
                 Q[next_state_key]=[0.,0.,0.,0.]
             
             next_max = np.max(Q[next_state_key])
-        
-            
-            
         
             Q[state_key][action] = (1 - alpha) * Q[state_key][action] + alpha * (reward + gamma * next_max)
             state, pos = next_state, next_pos
