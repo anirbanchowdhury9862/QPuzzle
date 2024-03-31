@@ -20,3 +20,8 @@ options:
 $ python play_game.py --test_mode True --model models/model_2 --games 500
 avg game steps 12.104 for 500 games
 ```
+## For solving the sliding puzzle
+```
+$ python play_game.py --model models/model_2 --image terminator.png 
+```
+<video src="video\Qpuzzle_test.mp4" width="500" height="500" controls></video>
