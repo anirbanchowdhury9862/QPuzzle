@@ -24,4 +24,10 @@ avg game steps 12.104 for 500 games
 ```
 $ python play_game.py --model models/model_2 --image terminator.png 
 ```
-<video src="https://github.com/anirbanchowdhury9862/QPuzzle/blob/main/video/Qpuzzle_test.mp4" width="500" height="500" controls></video>
+
+
+https://github.com/anirbanchowdhury9862/QPuzzle/assets/20869692/59d6bb8e-33ac-484e-83fe-75d3727854db
+
+
+
+
