@@ -1,5 +1,5 @@
-<font color='red' size=6><b> QPuzzle </font> <br>
-<font color='green' size=5><b>A Reinforcement learning agent trained with Q learning algorithm to solve any sliding puzzle created from any image.</font>
+# <font color='red' size=6><b> QPuzzle </font> <br>
+## <font color='green' size=5><b>A Reinforcement learning agent trained with Q learning algorithm to solve any sliding puzzle created from any image.</font>
 ```
 $ python play_game.py --help
 usage: play_game.py [-h] [--test_mode TEST_MODE] [--games GAMES] [--model MODEL] [--render RENDER] [--image IMAGE]
@@ -16,3 +16,7 @@ options:
   --image IMAGE         Image for the sliding puzzle
 ```
 ## For testing a model for avg steps it takes to win games
+```
+$ python play_game.py --test_mode True --model models/model_2 --games 500
+avg game steps 12.104 for 500 games
+```
