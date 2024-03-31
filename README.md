@@ -1,5 +1,5 @@
 # <font color='red' size=6><b> QPuzzle </font> <br>
-## <font color='green' size=5><b>A Reinforcement learning agent trained with Q learning algorithm to solve any sliding puzzle created from any image.</font>
+## <font color='green' size=5><b>A Reinforcement learning agent trained with Q learning algorithm to solve any sliding puzzle created from any image. The model takes the grid as input and predicts the next best action to win the game. Desigining proper reward functions ensure success of reinforcement learning models.</font>
 ```
 $ python play_game.py --help
 usage: play_game.py [-h] [--test_mode TEST_MODE] [--games GAMES] [--model MODEL] [--render RENDER] [--image IMAGE]
