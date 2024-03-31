@@ -1,7 +1,9 @@
 from PIL import Image, ImageTk
 import tkinter as tk
+import tkinter.font as font
 import random
-from RL import generate_random_state
+import numpy as np
+from RL import generate_random_state, BEGINNING_STATE
 # AI_Toggle=0
 move = {0: 'up ', 1: 'down ', 2: 'left ', 3: 'right '}
 class GameRenderer:
@@ -53,6 +55,13 @@ class GameRenderer:
             grid_image = ImageTk.PhotoImage(self.grids[i])
             self.labels[i].configure(image=grid_image)
             self.labels[i].image = grid_image
+        
+        if np.array_equal(self.state,BEGINNING_STATE.flatten()):
+            self.action_textbox.delete('1.0', tk.END)
+            space=" "*38
+            self.action_textbox.insert("1.0",f"{space}Hurray! Solved !!")
+            return
+
         if self.AI_Toggle:
             state_x = self.state.reshape((3, 3))
             actions = self.x_model(state_x)
@@ -113,8 +122,10 @@ class GameRenderer:
        
         hello_button = tk.Button(root, text="Let AI Help", command=self.print_hello)
         hello_button.grid(row=3, columnspan=3)
-        self.action_textbox = tk.Text(root, height=2, width=50)
+        hello_button['font']=font.Font(weight="bold",size=10)
+        self.action_textbox = tk.Text(root, height=2, width=60)
         self.action_textbox.grid(row=4, columnspan=3)
-        self.action_textbox.insert(tk.END, action_list)
+        self.action_textbox['font']=font.Font(weight="bold",size=10)
+        # self.action_textbox.insert(tk.END, action_list)
         root.mainloop()
 
