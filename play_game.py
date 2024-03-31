@@ -48,7 +48,7 @@ if __name__=='__main__':
     parser.add_argument('--games',type=int, help='Number of games to play, only works when TEST_MODE is set to True', required=not True)
     parser.add_argument('--model',type=str, help='Model path', required=not True)
     parser.add_argument('--render',type=bool, help='ORIGINAL GUI GAME', required=not True,default=True)
-    parser.add_argument('--image',type=str, help='ORIGINAL GUI GAME', required=not True,default=None)
+    parser.add_argument('--image',type=str, help='Image for the sliding puzzle', required=not True,default=None)
     
 
     args = parser.parse_args()
